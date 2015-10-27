@@ -1,6 +1,7 @@
 var MAPSPACE = function(jquery) {
 	'use strict'
 
+	var FIFTY_PERCENT = 0.5;
 	var map = null;
 	var jq = jquery;
 	var lastRes = null;
@@ -36,13 +37,10 @@ var MAPSPACE = function(jquery) {
 			});
 		},
 
-		setMap : function(newLatLng) {
-
-			var FIFTY_PERCENT = 0.5;
+		setNewMapCenter : function(newLatLng) {
 			var currentLatLng = map.getCenter();
-			console.log("current ->  " + currentLatLng + " new ->  " + newLatLng);
 			var halfwayLatLng = google.maps.geometry.spherical.interpolate(currentLatLng, newLatLng, FIFTY_PERCENT);
-
+			console.log("current ->  " + currentLatLng + " new ->  " + newLatLng + " halfway ->  " + halfwayLatLng);
 			map.panTo(halfwayLatLng);
 		}
 	};
