@@ -42,6 +42,12 @@ var MAPSPACE = function(jquery) {
 			var halfwayLatLng = google.maps.geometry.spherical.interpolate(currentLatLng, newLatLng, FIFTY_PERCENT);
 			console.log("current ->  " + currentLatLng + " new ->  " + newLatLng + " halfway ->  " + halfwayLatLng);
 			map.panTo(halfwayLatLng);
+		},
+
+		setNewMapZoom : function(guestLatLng, hostLatLng) {
+			var bounds = new google.maps.LatLngBounds(guestLatLng, hostLatLng);
+			console.log("New map bounds are: Southwest-> " + bounds.getSouthWest() + 	"  Northeast-> " + 	bounds.getNorthEast());
+			map.fitBounds(bounds);
 		}
 	};
 }($);
